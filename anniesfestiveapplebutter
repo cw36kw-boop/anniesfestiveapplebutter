@@ -1,0 +1,183 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annie's Apple Butter</title>
+    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for a more festive look */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fef3c7; /* Light creamy background */
+        }
+        .header-bg {
+            background-color: #991b1b; /* Deep Christmas Red */
+            background-image: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center p-4">
+
+    <!-- Header Section --><header class="header-bg w-full max-w-2xl mx-auto rounded-xl p-6 text-center shadow-lg mb-6">
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-yellow-100 tracking-tight">
+            Annie's Apple Butter
+        </h1>
+        <p class="mt-2 text-xl font-medium text-white/90">
+            The perfect gift for Christmas! 🎁
+        </p>
+    </header>
+
+    <!-- About Annie's Apple Butter Section (Image removed) --><section class="bg-white w-full max-w-2xl rounded-xl p-6 md:p-8 card-shadow mb-8 border border-gray-200 text-center">
+        <h3 class="text-2xl font-bold text-red-800 mb-3">Experience the Homemade Taste!</h3>
+        <p class="text-lg text-gray-700 leading-relaxed">
+            Annie's Apple Butter is crafted with love using traditional recipes, slow-cooked to perfection for that rich, sweet, and spiced flavor you crave. It's incredibly versatile—perfect on toast, with pork, or straight from the spoon! Share the warmth and deliciousness this holiday season.
+        </p>
+    </section>
+
+    <!-- Order Contact Section --><section class="bg-red-100 w-full max-w-2xl text-center p-6 rounded-xl border-4 border-red-400 card-shadow mb-8">
+        <h3 class="text-2xl font-bold text-red-800 mb-3">Ready to Order?</h3>
+        <p class="text-lg text-gray-700 mb-4">
+            Please contact Annie directly to place your order:
+        </p>
+        
+        <div class="space-y-3">
+            <a href="tel:+13047039380" class="inline-flex items-center bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 transform hover:scale-105 shadow-md">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 3.125a1 1 0 01-.29 1.056l-1.378 1.378a9.962 9.962 0 005.656 5.656l1.378-1.378a1 1 0 011.056-.29l3.125.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2a10 10 0 01-10-10V3z" />
+                </svg>
+                Text Annie at 304-703-9380
+            </a>
+            
+            <p class="text-gray-600 font-semibold text-sm pt-2">OR</p>
+
+            <a href="mailto:cw36kw@gmail.com" class="inline-flex items-center text-red-800 hover:text-red-600 font-semibold underline transition duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                </svg>
+                Email: cw36kw@gmail.com
+            </a>
+        </div>
+    </section>
+
+    <!-- Calculator Card --><main id="calculator-card" class="bg-white w-full max-w-2xl rounded-xl p-6 md:p-8 card-shadow border border-red-200">
+        <h2 class="text-2xl font-semibold mb-6 text-red-800 border-b pb-3">Order & Shipping Calculator</h2>
+
+        <!-- Product Inputs --><div class="space-y-6">
+            
+            <!-- Sugar-Free Option Toggle --><div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-gray-200">
+                <label for="sugar-free" class="flex items-center cursor-pointer">
+                    <span class="text-lg font-medium text-gray-700 mr-3">Sugar-Free Option</span>
+                    <input type="checkbox" id="sugar-free" class="h-5 w-5 text-red-600 rounded focus:ring-red-500" onchange="calculateTotal()">
+                </label>
+                <span class="text-sm text-gray-500">(Adds $0.50 per item)</span>
+            </div>
+
+            <!-- Pint Input --><div class="flex items-center justify-between bg-white p-4 rounded-lg border">
+                <div>
+                    <label for="pints" class="text-lg font-medium text-gray-800 block">Pints (16 oz)</label>
+                    <p class="text-sm text-green-700 font-semibold">$9.99 (Regular) / $10.49 (Sugar-Free)</p>
+                </div>
+                <input type="number" id="pints" value="0" min="0" class="w-24 text-center border-gray-300 rounded-lg shadow-sm focus:border-red-500 focus:ring-red-500 p-2 text-lg" onchange="calculateTotal()" oninput="calculateTotal()">
+            </div>
+
+            <!-- Half Pint Input --><div class="flex items-center justify-between bg-white p-4 rounded-lg border">
+                <div>
+                    <label for="half-pints" class="text-lg font-medium text-gray-800 block">Half Pints (8 oz)</label>
+                    <p class="text-sm text-green-700 font-semibold">$6.99 (Regular) / $7.49 (Sugar-Free)</p>
+                </div>
+                <input type="number" id="half-pints" value="0" min="0" class="w-24 text-center border-gray-300 rounded-lg shadow-sm focus:border-red-500 focus:ring-red-500 p-2 text-lg" onchange="calculateTotal()" oninput="calculateTotal()">
+            </div>
+        </div>
+
+        <!-- Order Summary & Shipping --><div class="mt-8 pt-6 border-t border-gray-200">
+            <h3 class="text-xl font-semibold mb-4 text-red-800">Your Order Summary</h3>
+            
+            <!-- Display Details --><div class="space-y-3 text-gray-700">
+                <div class="flex justify-between items-center">
+                    <span class="font-medium">Subtotal (Products):</span>
+                    <span id="subtotal" class="font-bold text-xl">$0.00</span>
+                </div>
+                <div class="flex justify-between items-center border-t pt-3">
+                    <span class="font-medium">Shipping & Handling:</span>
+                    <span id="shipping-cost" class="font-bold text-xl text-red-600">$0.00</span>
+                </div>
+            </div>
+
+            <!-- Total --><div class="mt-6 pt-4 border-t-4 border-red-500 flex justify-between items-center bg-red-50 p-4 rounded-lg">
+                <span class="text-2xl font-extrabold text-red-800">Estimated Total:</span>
+                <span id="total-cost" class="text-3xl font-extrabold text-red-800">$0.00</span>
+            </div>
+
+            <!-- Shipping Note --><p class="text-xs text-gray-500 mt-4 italic text-center">
+                * Shipping calculated as a $5.00 flat rate plus $1.50 per jar for packaging and weight.
+            </p>
+        </div>
+    </main>
+
+    <script>
+        // Constants for pricing and shipping
+        const PRICE_PINT_REGULAR = 9.99;
+        const PRICE_PINT_SUGAR_FREE = 10.49; // 9.99 + 0.50
+        const PRICE_HALF_PINT_REGULAR = 6.99;
+        const PRICE_HALF_PINT_SUGAR_FREE = 7.49; // 6.99 + 0.50
+
+        const SHIPPING_BASE_RATE = 5.00;
+        const SHIPPING_PER_ITEM = 1.50;
+
+        // Function to calculate the total cost dynamically
+        function calculateTotal() {
+            // 1. Get quantities and options
+            const pints = parseInt(document.getElementById('pints').value) || 0;
+            const halfPints = parseInt(document.getElementById('half-pints').value) || 0;
+            const isSugarFree = document.getElementById('sugar-free').checked;
+            
+            // Prevent negative quantities
+            if (pints < 0) document.getElementById('pints').value = 0;
+            if (halfPints < 0) document.getElementById('half-pints').value = 0;
+
+            // 2. Determine item prices based on sugar-free option
+            const pintPrice = isSugarFree ? PRICE_PINT_SUGAR_FREE : PRICE_PINT_REGULAR;
+            const halfPintPrice = isSugarFree ? PRICE_HALF_PINT_SUGAR_FREE : PRICE_HALF_PINT_REGULAR;
+
+            // 3. Calculate product subtotal
+            const productSubtotal = (pints * pintPrice) + (halfPints * halfPintPrice);
+            
+            // 4. Calculate shipping cost
+            const totalItems = pints + halfPints;
+            let shippingCost = 0;
+
+            if (totalItems > 0) {
+                // $5.00 flat rate + $1.50 per item
+                shippingCost = SHIPPING_BASE_RATE + (totalItems * SHIPPING_PER_ITEM);
+            }
+            // Shipping cost remains $0.00 if no items are ordered.
+
+            // 5. Calculate final total
+            const totalCost = productSubtotal + shippingCost;
+
+            // 6. Update the display in the DOM
+            document.getElementById('subtotal').textContent = formatCurrency(productSubtotal);
+            document.getElementById('shipping-cost').textContent = formatCurrency(shippingCost);
+            document.getElementById('total-cost').textContent = formatCurrency(totalCost);
+        }
+
+        // Helper function for currency formatting
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD'
+            }).format(amount);
+        }
+
+        // Initialize the calculation on page load
+        window.onload = function() {
+            calculateTotal();
+        };
+    </script>
+</body>
+</html>
